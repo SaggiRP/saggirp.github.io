@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+  <channel>
+    <title>My Blog</title>
+    <link>https://yourusername.github.io</link>
+    <description>My personal blog with thoughts and ideas.</description>
+    <language>en-us</language>
+
+    <item>
+      <title>My First Post</title>
+      <link>https://yourusername.github.io/posts/my-first-post.html</link>
+      <pubDate>Fri, 05 Apr 2025 00:00:00 GMT</pubDate>
+      <description>This is where I began. Simple thoughts, quiet mind.</description>
+    </item>
+
+    <item>
+      <title>Second Thoughts</title>
+      <link>https://yourusername.github.io/posts/second-thoughts.html</link>
+      <pubDate>Sun, 28 Mar 2025 00:00:00 GMT</pubDate>
+      <description>Thinking again. Maybe I was wrong. Or maybe I'm growing.</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="My personal blog with thoughts and ideas." />
+  <title>My Blog</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="alternate" type="application/rss+xml" title="RSS Feed" href="/feed.xml" />
+</head>
+<body>
+  <main>
+    <header>
+      <h1>✨ My Blog</h1>
+      <p>A quiet place for my thoughts.</p>
+      <input type="text" id="search" placeholder="Search posts..." />
+    </header>
+
+    <div id="posts">
+      <!-- Posts will appear here -->
+    </div>
+
+    <footer>
+      <p>Written with care. Powered by <a href="https://github.com">GitHub Pages</a>.</p>
+    </footer>
+  </main>
+
+  <script id="post-template" type="text/template">
+    <article>
+      <h2><a href="{{url}}">{{title}}</a></h2>
+      <time>{{date}}</time>
+      <div class="excerpt">{{excerpt}}</div>
+    </article>
+  </script>
+
+  <script src="js/search.js"></script>
+</body>
+</html>
