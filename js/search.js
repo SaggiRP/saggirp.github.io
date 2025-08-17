@@ -10,7 +10,14 @@ const posts = [
     date: "March 28, 2025",
     url: "posts/second-thoughts.html",
     excerpt: "Thinking again. Maybe I was wrong. Or maybe I'm growing."
+  },
+  {
+    title: "By the Time You Learn the Rules, You Don’t Want to Play the Game Anymore",
+    date: "March 28, 2025",
+    url: "posts/play rules.html",
+    excerpt: "There comes a point in life when understanding replaces ambition."
   }
+
 ];
 
 function loadPosts() {

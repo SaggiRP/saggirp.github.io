@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Write a Post</title>
+  <style>
+    body {
+      font-family: 'Georgia', serif;
+      line-height: 1.6;
+      max-width: 700px;
+      margin: 40px auto;
+      padding: 20px;
+      background: #fdfdfd;
+      color: #222;
+    }
+    input, textarea, button {
+      padding: 10px;
+      margin: 10px 0;
+      width: 100%;
+      font-size: 16px;
+    }
+    input[type="text"] {
+      font-size: 1.4em;
+    }
+    textarea {
+      height: 300px;
+      border: 1px solid #ccc;
+      resize: vertical;
+    }
+    button {
+      background: #0066cc;
+      color: white;
+      font-size: 1.1em;
+      cursor: pointer;
+      border: none;
+    }
+    button:hover {
+      background: #0055aa;
+    }
+    #output {
+      background: #f4f4f4;
+      padding: 15px;
+      border: 1px solid #ddd;
+      white-space: pre-wrap;
+      margin-top: 20px;
+      display: none;
+    }
+    .info {
+      font-size: 0.9em;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+  <h1>✍️ Write a Post</h1>
+  <p class="info">Fill in the form and click "Save Post". Then copy the HTML below and save it.</p>
+
+  <label>Title</label>
+  <input type="text" id="title" placeholder="My Thoughts Today" />
+
+  <label>Date (e.g., May 5, 2025)</label>
+  <input type="text" id="date" placeholder="May 5, 2025" value="May 5, 2025" />
+
+  <label>Your Post (one paragraph per line)</label>
+  <textarea id="content" placeholder="I woke up early today.
+The sky was gray.
+I feel hopeful."></textarea>
+
+  <button onclick="savePost()">Save Post</button>
+
+  <div id="output"></div>
+
+  <script>
+    function savePost() {
+      const title = document.getElementById("title").value.trim();
+      const date = document.getElementById("date").value.trim();
+      const content = document.getElementById("content").value.trim();
+
+      // Create filename: "My Thoughts" → "my-thoughts.html"
+      const slug = title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "");
+      const filename = slug + ".html";
+
+      if (!title || !content) {
+        alert("Please add a title and some writing.");
+        return;
+      }
+
+      // Convert line breaks to <p> tags
+      const paragraphs = content.split('\n')
+                                .filter(line => line.trim().length > 0)
+                                .map(line => `<p>${line.trim()}</p>`)
+                                .join('\n    ');
+
+      // Generate full HTML
+      const html = `<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>${title}</title>
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+  <main style="max-width: 700px; margin: 40px auto; padding: 20px;">
+    <a href="../">← Home</a>
+    <h1>${title}</h1>
+    <time>${date}</time>
+    ${paragraphs}
+  </main>
+</body>
+</html>`;
+
+      // Show the result
+      const output = document.getElementById("output");
+      output.style.display = "block";
+      output.innerHTML = `
+<p><strong>✅ Success! Now do this:</strong></p>
+<ol>
+  <li>Copy the HTML below</li>
+  <li>Open your text editor</li>
+  <li>Create a file: <code>posts/${filename}</code></li>
+  <li>Paste the HTML and save</li>
+  <li>Then I’ll help you update search (just one quick edit)</li>
+</ol>
+<textarea rows="10" style="width:100%;">${html}</textarea>`;
+    }
+  </script>
+</body>
+</html>
